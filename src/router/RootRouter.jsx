@@ -1,6 +1,6 @@
 import React from "react";
-import Main from "../components/main/Main.jsx";
-import Header from "../components/header/Header.jsx";
+import Header from "../components/header/Header";
+import Main from "../components/main/Main";
 
 const RootRouter = () => {
 	return (

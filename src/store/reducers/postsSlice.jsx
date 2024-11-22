@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
 	posts: [],
 	loader: true,
+	favorites: [],
 };
 
 export const fetchPosts = createAsyncThunk(
@@ -12,7 +13,7 @@ export const fetchPosts = createAsyncThunk(
 		// console.log("params slice", params);
 		try {
 			const response = await fetch(
-				`https://jsonplaceholder.typicode.com/posts?${queryParams}&_limit=10`,
+				`https://jsonplaceholder.typicode.com/posts?${queryParams}&_limit=9`,
 				{
 					method: "GET",
 					headers: {
@@ -34,7 +35,19 @@ export const fetchPosts = createAsyncThunk(
 export const postsSlice = createSlice({
 	name: "posts",
 	initialState,
-	reducers: {},
+	reducers: {
+		addToFavorites: (state, action) => {
+			const post = state.posts.find((post) => post.id === action.payload);
+			if (post && !state.favorites.some((fav) => fav.id === post.id)) {
+				state.favorites.push(post); // Додаємо об'єкт поста до "Вибраного"
+			}
+		},
+		removeFromFavorites: (state, action) => {
+			state.favorites = state.favorites.filter(
+				(post) => post.id !== action.payload
+			); // Видаляємо об'єкт поста за ID
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchPosts.pending, (state) => {
 			state.loader = true;
@@ -46,4 +59,5 @@ export const postsSlice = createSlice({
 	},
 });
 
+export const { addToFavorites, removeFromFavorites } = postsSlice.actions;
 export default postsSlice.reducer;
