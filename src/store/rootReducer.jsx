@@ -3,8 +3,8 @@ import postsReducer from "./reducers/postsSlice";
 import searchDataReducer from "./reducers/searchSlice";
 
 const rootReducer = combineReducers({
-	postsReducer,
-	searchDataReducer,
+  postsReducer,
+  searchDataReducer,
 });
 
 export default rootReducer;
