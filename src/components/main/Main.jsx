@@ -24,16 +24,12 @@ const Main = () => {
 	console.log(`Fetch posts data:`, posts);
 
 	useEffect(() => {
-		if (currentPage !== String(pageNumber)) {
-			setSearch({ _page: pageNumber });
+		if (currentPage === null) {
+			setPageNumber(currentPage ? parseInt(currentPage) : 1);
+		} else {
+			setPageNumber(currentPage ? parseInt(currentPage) : 1);
 		}
-		// if (currentPage === null) {
-		// 	setPageNumber(currentPage ? parseInt(currentPage) : 1);
-		// } else {
-		// 	setPageNumber(currentPage ? parseInt(currentPage) : 1);
-		// }
-		// }, [currentPage]);
-	}, [pageNumber, currentPage, setSearch]);
+	}, [currentPage]);
 
 	useEffect(() => {
 		dispatch(fetchPosts({ params }));
