@@ -8,37 +8,37 @@ import Suggestions from "./components/suggestions/Suggestions";
 import { fetchSearchData } from "../../store/reducers/searchSlice";
 
 const Search = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const [searchValue, setSearchValue] = useState("");
-  const [suggestionsOpened, setSuggestionsOpened] = useState(false);
+	const [searchValue, setSearchValue] = useState("");
+	const [suggestionsOpened, setSuggestionsOpened] = useState(false);
 
-  const searchData = useSelector((state) => state.searchDataReducer.searchData);
-  console.log(`Search data:`, searchData);
+	const searchData = useSelector((state) => state.searchDataReducer.searchData);
+	//   console.log(`Search data:`, searchData);
 
-  useEffect(() => {
-    let params = `q=${searchValue}`;
-    if (searchValue !== "") {
-      dispatch(fetchSearchData({ params }));
-    } else return;
-  }, [searchValue]);
+	useEffect(() => {
+		let params = `q=${searchValue}`;
+		if (searchValue !== "") {
+			dispatch(fetchSearchData({ params }));
+		} else return;
+	}, [searchValue]);
 
-  return (
-    <Box sx={{ position: "relative" }}>
-      <SearchField
-        value={searchValue}
-        setValue={setSearchValue}
-        setSuggestionsOpened={setSuggestionsOpened}
-      />
-      {suggestionsOpened ? (
-        <Box sx={suggestionsBoxStyle}>
-          {searchData.map((item) => {
-            return <Suggestions id={item.id} title={item.title} />;
-          })}
-        </Box>
-      ) : null}
-    </Box>
-  );
+	return (
+		<Box sx={{ position: "relative" }}>
+			<SearchField
+				value={searchValue}
+				setValue={setSearchValue}
+				setSuggestionsOpened={setSuggestionsOpened}
+			/>
+			{suggestionsOpened ? (
+				<Box sx={suggestionsBoxStyle}>
+					{searchData.map((item) => {
+						return <Suggestions id={item.id} title={item.title} />;
+					})}
+				</Box>
+			) : null}
+		</Box>
+	);
 };
 
 export default Search;

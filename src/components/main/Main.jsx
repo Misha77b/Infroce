@@ -20,8 +20,8 @@ const Main = () => {
 
 	const loading = useSelector((state) => state.postsReducer.loader);
 	const posts = useSelector((state) => state.postsReducer.posts);
-	console.log(posts);
-	console.log(`Fetch posts data:`, posts);
+	// console.log(posts);
+	// console.log(`Fetch posts data:`, posts);
 
 	useEffect(() => {
 		if (currentPage === null) {
@@ -34,7 +34,7 @@ const Main = () => {
 	useEffect(() => {
 		dispatch(fetchPosts({ params }));
 		window.scrollTo({ top: 0 });
-	}, [pageNumber]);
+	}, [currentPage]);
 
 	return (
 		<Box
