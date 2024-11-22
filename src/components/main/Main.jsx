@@ -11,7 +11,7 @@ import Search from "../search/Search";
 
 const Main = () => {
 	const dispatch = useDispatch();
-	const [search, setSearch] = useSearchParams();
+	const [search] = useSearchParams();
 	const { params } = useLocationParams();
 
 	// pagination
@@ -29,12 +29,12 @@ const Main = () => {
 		} else {
 			setPageNumber(currentPage ? parseInt(currentPage) : 1);
 		}
-	}, [currentPage]);
+	}, [dispatch, currentPage]);
 
 	useEffect(() => {
 		dispatch(fetchPosts({ params }));
 		window.scrollTo({ top: 0 });
-	}, [currentPage]);
+	}, [dispatch, params]);
 
 	return (
 		<Box
