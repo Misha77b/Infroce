@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, AppBar, Toolbar, Typography } from "@mui/material";
 
-const Header = () => {
+const NavBar = () => {
 	return (
 		<Box>
 			<AppBar
@@ -31,4 +31,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default NavBar;
