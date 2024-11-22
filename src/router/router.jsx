@@ -4,7 +4,7 @@ import RootRouter from "./RootRouter";
 import Main from "../components/main/Main";
 import CardPage from "../components/cardPage/CardPage";
 
-export const Router = createBrowserRouter([
+export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <RootRouter />,
