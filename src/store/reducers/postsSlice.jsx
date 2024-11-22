@@ -8,11 +8,11 @@ const initialState = {
 export const fetchPosts = createAsyncThunk(
 	"posts/fetchData",
 	async ({ params }) => {
-		const queryParams = params || "";
-		console.log("params slice", params);
+		// const queryParams = params || "";
+		// console.log("params slice", params);
 		try {
 			const response = await fetch(
-				`https://jsonplaceholder.typicode.com/posts?${queryParams}&_limit=10`,
+				`https://jsonplaceholder.typicode.com/posts?${params}&_limit=10`,
 				{
 					method: "GET",
 					headers: {
