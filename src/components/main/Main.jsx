@@ -34,7 +34,8 @@ const Main = () => {
 	useEffect(() => {
 		dispatch(fetchPosts({ params }));
 		window.scrollTo({ top: 0 });
-	}, [currentPage]);
+		console.log(params);
+	}, [pageNumber]);
 
 	return (
 		<Box
