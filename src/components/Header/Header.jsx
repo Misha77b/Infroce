@@ -23,7 +23,7 @@ const Header = () => {
 							fontSize: "24px",
 							fontWeight: "700",
 						}}>
-						Inforce
+						Inforce testing app
 					</Typography>
 				</Toolbar>
 			</AppBar>
