@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box, Typography, IconButton } from "@mui/material";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { cardSxStyle, likeBtn } from "./postCarsSxStyles";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,6 +22,8 @@ const PostCard = ({ id, title, body }) => {
 		}
 	};
 
+	console.log("favorite:", toggleFavorite);
+
 	return (
 		<Box sx={cardSxStyle}>
 			{/* text */}
@@ -36,13 +39,22 @@ const PostCard = ({ id, title, body }) => {
 
 			{/* Like btn */}
 			<Box sx={likeBtn}>
-				<IconButton
-					sx={{
-						"&:hover": {
-							color: "green",
-						},
-					}}>
-					<ThumbUpOffAltIcon />
+				<IconButton onClick={() => toggleFavorite(id)}>
+					{favorites.some((fav) => fav.id === id) ? (
+						<ThumbUpIcon
+							sx={{
+								color: "green",
+							}}
+						/>
+					) : (
+						<ThumbUpOffAltIcon
+							sx={{
+								"&:hover": {
+									color: "green",
+								},
+							}}
+						/>
+					)}
 				</IconButton>
 			</Box>
 		</Box>

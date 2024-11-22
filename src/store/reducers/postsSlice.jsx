@@ -39,13 +39,13 @@ export const postsSlice = createSlice({
 		addToFavorites: (state, action) => {
 			const post = state.posts.find((post) => post.id === action.payload);
 			if (post && !state.favorites.some((fav) => fav.id === post.id)) {
-				state.favorites.push(post); // Додаємо об'єкт поста до "Вибраного"
+				state.favorites.push(post);
 			}
 		},
 		removeFromFavorites: (state, action) => {
 			state.favorites = state.favorites.filter(
 				(post) => post.id !== action.payload
-			); // Видаляємо об'єкт поста за ID
+			);
 		},
 	},
 	extraReducers: (builder) => {
